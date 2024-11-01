@@ -1,6 +1,9 @@
 import logo from "../assets/logo.png";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../store/AuthProvider";
+import { toast } from "react-toastify";
 
 export default function Login({ onClose }) {
   // Variables
@@ -10,9 +13,24 @@ export default function Login({ onClose }) {
     formState: { errors },
   } = useForm();
 
+  const { login, loading } = useContext(AuthContext);
+
   // Function
   const onSubmit = (data) => {
-    console.log(data);
+    if (loading) return;
+
+    return login(data.email, data.password)
+      .then((userCredential) => {
+        navigate("/");
+      })
+      .catch((error) => {
+        const { code } = error;
+        if (code === "auth/invalid-credential" || code === "auth/user-not-found") {
+          toast.error("Email ou mot de passe incorrect.");
+        } else {
+          toast.error(code);
+        }
+      });
   };
 
   return (
@@ -42,7 +60,7 @@ export default function Login({ onClose }) {
           })}
         />
         {errors.password && <p className="text-red-700">{errors.password.message}</p>}
-        <Button className={"py-4 mt-32"} primary>
+        <Button className={"py-4 mt-32"} primary disabled={loading}>
           Me connecter
         </Button>
       </form>

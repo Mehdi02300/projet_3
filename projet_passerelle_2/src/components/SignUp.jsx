@@ -1,16 +1,12 @@
-import { useState } from "react";
 import logo from "../assets/logo.png";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../store/AuthProvider";
 
 export default function SignUp({ onClose }) {
-  // State
-  const [loading, setLoading] = useState(false);
-
   // Variables
   const {
     register,
@@ -18,27 +14,23 @@ export default function SignUp({ onClose }) {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const { createUser, loading } = useContext(AuthContext);
 
   // Function
   const onSubmit = async (data) => {
     if (loading) return;
 
-    setLoading(true);
-
-    await createUserWithEmailAndPassword(auth, data.email, data.password)
+    return createUser(data.email, data.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        setLoading(false);
         navigate("/");
       })
       .catch((error) => {
-        const { code, message } = error;
-        if (code == "auth/email-already-in-use") {
+        const { code } = error;
+        if (code === "auth/email-already-in-use") {
           toast.error("Cet email est déjà utilisé.");
         } else {
           toast.error(code);
         }
-        setLoading(false);
       });
   };
 
