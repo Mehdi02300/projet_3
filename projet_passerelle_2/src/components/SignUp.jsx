@@ -21,7 +21,20 @@ export default function SignUp({ onClose }) {
     if (loading) return;
 
     return createUser(data.email, data.password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
+        const userId = userCredential.user.uid;
+        await fetch(
+          `https://projet-passerrelle-2-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}.json`,
+          {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: data.name,
+              email: data.email,
+              username: data.username,
+            }),
+          }
+        );
         navigate("/");
       })
       .catch((error) => {
@@ -42,17 +55,18 @@ export default function SignUp({ onClose }) {
         <input
           placeholder="Nom et prénom"
           className="w-full p-4 my-5 border focus:border-blue-500 rounded text-black"
-          {...register("name", {
-            required: true,
-          })}
+          {...register("name", { required: true })}
+        />
+        <input
+          placeholder="Pseudo"
+          className="w-full p-4 my-5 border rounded text-black"
+          {...register("username", { required: true })}
         />
         <input
           type="email"
           placeholder="Email"
           className="w-full p-4 my-5 border rounded text-black"
-          {...register("email", {
-            required: true,
-          })}
+          {...register("email", { required: true })}
         />
         <input
           type="password"

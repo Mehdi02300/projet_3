@@ -1,14 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../store/AuthProvider";
 import { toast } from "react-toastify";
 
-export default function CreateTweet() {
-  // STATE
+export default function CreateTweet({ onTweetAdded }) {
+  const { user } = useContext(AuthContext);
   const [tweet, setTweet] = useState("");
-
-  // VARIABLE
   const maxCharacters = 280;
 
-  // FUNCTIONS
+  // Functions
   const handleChange = (e) => {
     if (e.target.value.length <= maxCharacters) {
       setTweet(e.target.value);
@@ -17,23 +16,36 @@ export default function CreateTweet() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!user) {
+      toast.error("Vous devez être connecté pour envoyer un tweet.");
+      return;
+    }
+
+    const tweetData = {
+      tweet,
+      likes: 0,
+      userId: user.uid,
+      username: user.username,
+      name: user.name,
+      timestamp: Date.now(),
+    };
+
     const response = await fetch(
       "https://projet-passerrelle-2-default-rtdb.europe-west1.firebasedatabase.app/tweets.json",
       {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tweet }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tweetData),
       }
     );
 
     if (!response.ok) {
       toast.error("Une erreur est survenue.");
-      return;
     } else {
       toast.success("Tweet envoyé avec succès !");
       setTweet("");
+      onTweetAdded();
     }
   };
 
