@@ -15,9 +15,7 @@ export default function Profile() {
           `https://projet-passerrelle-2-default-rtdb.europe-west1.firebasedatabase.app/users/${userId}.json`
         );
         if (!response.ok) {
-          throw new Error(
-            "Une erreur est survenue lors de la récupération des données utilisateur."
-          );
+          throw new Error("Une erreur est survenue.");
         }
         const data = await response.json();
         setUserData(data);

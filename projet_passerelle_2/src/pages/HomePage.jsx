@@ -13,14 +13,14 @@ export default function HomePage() {
 
   return (
     <div className="h-screen text-white">
-      <div className="h-full w-3/4 mx-auto flex justify-between items-center">
-        <div className="flex-1">
-          <img src={logo} alt="Logo" height={350} width={350} />
+      <div className="h-full w-11/12 lg:w-3/4 mx-auto mt-5 flex flex-col lg:flex-row justify-between lg:items-center gap-y-10 lg:gap-y-0">
+        <div className="lg:flex-1">
+          <img src={logo} alt="Logo" className="h-20 lg:h-72 w-20 lg:w-72" />
         </div>
         <div className="flex-1 space-y-10">
-          <h2 className="text-7xl font-extrabold">Ça se passe maintenant</h2>
-          <h4 className="text-4xl font-bold">Inscrivez-vous.</h4>
-          <div className="w-3/5">
+          <h2 className="text-4xl lg:text-7xl font-extrabold">Ça se passe maintenant</h2>
+          <h4 className="text-xl lg:text-4xl font-bold">Inscrivez-vous.</h4>
+          <div className="w-1/2 lg:w-3/5">
             <Button onClick={() => setIsSignupOpen(true)} primary>
               Créer un compte
             </Button>

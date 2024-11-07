@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../store/AuthProvider";
 
-export default function SignUp({ onClose }) {
+export default function SignUp() {
   // Variables
   const {
     register,
@@ -50,28 +50,28 @@ export default function SignUp({ onClose }) {
   return (
     <div className="w-3/4 mx-auto">
       <img src={logo} alt="logo X" height={30} width={30} className="mx-auto" />
-      <h2 className="text-xl font-bold mb-4 my-10">Créer votre compte</h2>
+      <h2 className="text-xl font-bold mb-2 mt-10">Créer votre compte</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="Nom et prénom"
-          className="w-full p-4 my-5 border focus:border-blue-500 rounded text-black"
+          className="w-full p-4 my-2 border focus:border-blue-500 rounded text-black"
           {...register("name", { required: true })}
         />
         <input
           placeholder="Pseudo"
-          className="w-full p-4 my-5 border rounded text-black"
+          className="w-full p-4 my-2 border rounded text-black"
           {...register("username", { required: true })}
         />
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-4 my-5 border rounded text-black"
+          className="w-full p-4 my-2 border rounded text-black"
           {...register("email", { required: true })}
         />
         <input
           type="password"
           placeholder="Mot de passe"
-          className="w-full p-4 mt-5 border rounded text-black"
+          className="w-full p-4 mt-2 border rounded text-black"
           {...register("password", {
             required: true,
             minLength: {
@@ -81,7 +81,7 @@ export default function SignUp({ onClose }) {
           })}
         />
         {errors.password && <p className="text-red-700">{errors.password.message}</p>}
-        <Button className={"py-4 mt-32"} primary disabled={loading}>
+        <Button className={"py-4 mt-20"} primary disabled={loading}>
           Créer mon profil
         </Button>
       </form>

@@ -5,7 +5,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 export default function Main() {
   //Variables
-  const { user, loading } = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
 
   if (loading) {
     return (

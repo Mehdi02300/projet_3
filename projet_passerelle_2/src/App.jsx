@@ -9,6 +9,7 @@ import Main from "./layouts/Main";
 const Home = lazy(() => import("./pages/HomePage"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Profile = lazy(() => import("./pages/Profile"));
+const TweetDetails = lazy(() => import("./pages/TweetDetails"));
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -31,6 +32,14 @@ function App() {
                 element: (
                   <Suspense>
                     <Profile />
+                  </Suspense>
+                ),
+              },
+              {
+                path: `/tweet/:tweetId`,
+                element: (
+                  <Suspense>
+                    <TweetDetails />
                   </Suspense>
                 ),
               },

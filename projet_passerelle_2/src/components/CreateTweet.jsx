@@ -50,7 +50,7 @@ export default function CreateTweet({ onTweetAdded }) {
   };
 
   return (
-    <div className="w-lg mx-auto p-4 border rounded-lg bg-gray-800 text-white">
+    <div className="w-lg mx-auto p-4 border rounded-lg text-white">
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <textarea
           id="tweet"

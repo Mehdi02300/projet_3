@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AuthContext } from "../store/AuthProvider";
 import { toast } from "react-toastify";
 
-export default function Login({ onClose }) {
+export default function Login() {
   // Variables
   const {
     register,
@@ -36,12 +36,12 @@ export default function Login({ onClose }) {
   return (
     <div className="w-3/4 mx-auto">
       <img src={logo} alt="logo X" height={30} width={30} className="mx-auto" />
-      <h2 className="text-xl font-bold mb-4 my-10">Créer votre compte</h2>
+      <h2 className="text-xl font-bold mb-5 mt-10">Connectez-vous</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="email"
           placeholder="Email"
-          className="w-full p-4 my-5 border rounded text-black"
+          className="w-full p-4 my-2 border focus:border-blue-500 rounded text-black"
           {...register("email", {
             required: true,
           })}
@@ -50,7 +50,7 @@ export default function Login({ onClose }) {
         <input
           type="password"
           placeholder="Mot de passe"
-          className="w-full p-4 mt-5 border rounded text-black"
+          className="w-full p-4 my-2 border focus:border-blue-500 rounded text-black"
           {...register("password", {
             required: true,
             minLength: {
