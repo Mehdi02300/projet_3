@@ -32,6 +32,8 @@ export default function SignUp() {
               name: data.name,
               email: data.email,
               username: data.username,
+              followers: data.followers,
+              following: data.following,
             }),
           }
         );

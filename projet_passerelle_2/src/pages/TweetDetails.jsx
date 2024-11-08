@@ -83,8 +83,8 @@ export default function TweetDetails() {
         <div className="">
           <Tweets createHidden answerHidden tweetAnswer />
           <CommentForm tweetId={tweetId} onCommentAdded={() => setReload(!reload)} />
+          <h3 className="text-lg font-bold text-white">Commentaires</h3>
           <div className="mt-6">
-            <h3 className="text-lg font-bold text-white">Commentaires</h3>
             <div className="space-y-4 mt-4">
               {comments.map((comment) => (
                 <div key={comment.id} className="flex p-4 border-b border-gray-700 rounded-lg">
