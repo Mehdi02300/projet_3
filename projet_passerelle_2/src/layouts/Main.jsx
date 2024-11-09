@@ -4,7 +4,6 @@ import { AuthContext } from "../store/AuthProvider";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 export default function Main() {
-  //Variables
   const { loading } = useContext(AuthContext);
 
   if (loading) {

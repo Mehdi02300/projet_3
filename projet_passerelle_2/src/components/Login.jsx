@@ -6,7 +6,7 @@ import { AuthContext } from "../store/AuthProvider";
 import { toast } from "react-toastify";
 
 export default function Login() {
-  // Variables
+  // VARIABLES
   const {
     register,
     handleSubmit,
@@ -15,7 +15,7 @@ export default function Login() {
 
   const { login, loading } = useContext(AuthContext);
 
-  // Function
+  // FUNCTION
   const onSubmit = (data) => {
     if (loading) return;
 

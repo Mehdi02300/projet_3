@@ -10,6 +10,7 @@ import { auth } from "../firebase";
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  // STATES
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -20,10 +21,9 @@ const AuthProvider = ({ children }) => {
     });
   }, []);
 
-  // Functions
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
+  // FUNCTIONS
+  const logOut = async () => {
+    return await signOut(auth);
   };
 
   const createUser = (email, password) => {

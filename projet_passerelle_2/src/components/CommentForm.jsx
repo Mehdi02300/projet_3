@@ -3,9 +3,11 @@ import { AuthContext } from "../store/AuthProvider";
 import { toast } from "react-toastify";
 
 export default function CommentForm({ tweetId, onCommentAdded }) {
+  // STATE
   const [commentText, setCommentText] = useState("");
   const { user } = useContext(AuthContext);
 
+  // FUNCTION
   const handleSubmit = async (e) => {
     e.preventDefault();
 

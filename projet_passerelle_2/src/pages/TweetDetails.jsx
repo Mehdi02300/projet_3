@@ -8,10 +8,12 @@ import { FaHeart, FaTrash } from "react-icons/fa";
 import pictureProfil from "../assets/oeuf.jpeg";
 
 export default function TweetDetails() {
+  //STATES
   const [tweetData, setTweetData] = useState(null);
   const [comments, setComments] = useState([]);
   const [reload, setReload] = useState(false);
 
+  // VARIABLES
   const { user } = useContext(AuthContext);
   const { tweetId } = useParams();
 
@@ -20,6 +22,7 @@ export default function TweetDetails() {
     fetchComments();
   }, [reload]);
 
+  // FUNCTIONS
   const fetchTweetData = async () => {
     const response = await fetch(
       `https://projet-passerrelle-2-default-rtdb.europe-west1.firebasedatabase.app/tweets/${tweetId}.json`
@@ -79,7 +82,7 @@ export default function TweetDetails() {
   return (
     <div className="flex h-screen">
       <NavBar />
-      <div className="flex-1 py-5 px-16 overflow-y-auto ml-[20%]">
+      <div className="flex-1 py-5 pr-3 lg:px-16 overflow-y-auto ml-[10%] lg:ml-[20%]">
         <div className="">
           <Tweets createHidden answerHidden tweetAnswer />
           <CommentForm tweetId={tweetId} onCommentAdded={() => setReload(!reload)} />

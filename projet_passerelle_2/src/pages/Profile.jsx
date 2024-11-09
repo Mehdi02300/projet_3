@@ -21,6 +21,8 @@ export default function Profile() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+    if (!user) return;
+
     const fetchUserData = async () => {
       try {
         const response = await fetch(
@@ -73,6 +75,8 @@ export default function Profile() {
 
   // FUNCTIONS
   const handleFollow = async () => {
+    if (!user) return;
+
     try {
       const updatedFollowers = isFollowing
         ? userData.followers.filter((followerId) => followerId !== user.uid)
@@ -126,7 +130,7 @@ export default function Profile() {
   return (
     <div className="flex h-screen">
       <NavBar />
-      <div className="flex-1 py-5 px-16 overflow-y-auto ml-[20%]">
+      <div className="flex-1 py-5 pr-3 lg:px-16 overflow-y-auto ml-[10%] lg:ml-[20%]">
         <div className="flex justify-between items-end">
           <div className="flex flex-col p-4">
             <img src={pictureProfil} alt="Profil" className="h-32 w-32 rounded-full mr-4" />

@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../store/AuthProvider";
 
 export default function SignUp() {
-  // Variables
+  // VARIABLES
   const {
     register,
     handleSubmit,
@@ -16,7 +16,7 @@ export default function SignUp() {
   const navigate = useNavigate();
   const { createUser, loading } = useContext(AuthContext);
 
-  // Function
+  // FUNCTION
   const onSubmit = async (data) => {
     if (loading) return;
 

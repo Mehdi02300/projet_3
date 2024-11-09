@@ -3,11 +3,13 @@ import { AuthContext } from "../store/AuthProvider";
 import { toast } from "react-toastify";
 
 export default function CreateTweet({ onTweetAdded }) {
-  const { user } = useContext(AuthContext);
+  // STATE
   const [tweet, setTweet] = useState("");
+  // VARIABLES
   const maxCharacters = 280;
+  const { user } = useContext(AuthContext);
 
-  // Functions
+  // FUNCTIONS
   const handleChange = (e) => {
     if (e.target.value.length <= maxCharacters) {
       setTweet(e.target.value);
