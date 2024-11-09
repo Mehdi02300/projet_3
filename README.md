@@ -2,7 +2,7 @@ Introduction :<br>
 Ce projet est un clône de "X". L'application permet aux utilisateurs de publier des tweets, de suivre d'autres comptes, et de lire les publications.<br><br>
 
 Fonctionnalités principales :<br>
-Page d'accueil : Les utilisateurs connectés sont accueillis par un fil d'actualités qui affiche les tweets<br>.
+Page d'accueil : Les utilisateurs connectés sont accueillis par un fil d'actualités qui affiche les tweets.<br>
 Inscription et connexion : Les utilisateurs peuvent créer un compte, se connecter, et se déconnecter.<br>
 Publication de tweets : Les utilisateurs peuvent partager des messages en temps réel.<br>
 Abonnement aux profils : Les utilisateurs ont la possibilité de s’abonner et se désabonner des profils d'autres utilisateurs.<br>
