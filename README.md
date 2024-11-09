@@ -1,4 +1,4 @@
-Introduction<br>
+Introduction :<br>
 Ce projet est un clône de "X". L'application permet aux utilisateurs de publier des tweets, de suivre d'autres comptes, et de lire les publications.<br><br>
 
 Fonctionnalités principales :<br>
